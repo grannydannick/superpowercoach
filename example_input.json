@@ -1,0 +1,38 @@
+{
+  "B": {
+    "biomarker_summary": "Elevated HbA1c (6.2%), high triglycerides (180 mg/dL), low HDL (38 mg/dL)",
+    "top_themes": [
+      {"theme": "Metabolic/Insulin Resistance", "pattern_strength": "4"}
+    ],
+    "pattern_classification": "Significant"
+  },
+  "P": {
+    "preferences": ["Energy", "Weight Loss"],
+    "goals": ["Improve metabolic health", "Increase energy levels"]
+  },
+  "C": {
+    "age": 45,
+    "sex": "M",
+    "lifestyle": {"activity": "Sedentary", "sleep": "6 hours", "stress": "High"}
+  },
+  "PRO": [
+    {
+      "rank": 1,
+      "theme": "Metabolic/Insulin Resistance",
+      "protocol_name": "Metabolic Reset Protocol",
+      "evidence_source": "Biomarker"
+    },
+    {
+      "rank": 2,
+      "theme": "Cardiovascular",
+      "protocol_name": "Cardiovascular Health Protocol",
+      "evidence_source": "Biomarker"
+    },
+    {
+      "rank": 3,
+      "theme": "Foundations of Health",
+      "protocol_name": "Foundations of Health Protocol",
+      "evidence_source": "Foundations"
+    }
+  ]
+}

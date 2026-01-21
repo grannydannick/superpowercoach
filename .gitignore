@@ -1,0 +1,18 @@
+# Environment variables
+.env
+
+# Test outputs
+test_*.json
+test_*.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Output files
+combined_prompt.txt
+rag_protocols.json
+synthetic_input.json
