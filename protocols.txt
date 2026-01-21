@@ -1,0 +1,535 @@
+# Protocols
+
+<aside>
+‼️
+
+**NOTE:** 
+
+- Danny is creating a bunch of specialty panels. These new ones will be much better, and more comprehensive.
+- Similarly, we will run some experiments with these protocols ie. CAC scan recommendations for cardiovascular risk
+- These protocols will change as we add new ones for more niche conditions (these cover the 80/20) and modify existing ones to improve them, get new clinical advice etc.
+- *All recommendations after the third are considered backups or swaps for step 8 of the analysis flow*
+</aside>
+
+### Foundations of Health
+
+```markdown
+## 1. Foundations of Health
+**Protocol:** Foundations of Health Protocol
+
+### Primary Recommendation
+**O.N.E. Omega** `Supplement`
+> Highly concentrated omega-3 fatty acids (EPA and DHA) in triglyceride form for optimal absorption. A 2025 meta-analysis of 42 studies with 176,253 participants showed omega-3 supplementation significantly reduced cardiovascular mortality (p=0.02), myocardial infarction (p=0.008), and coronary heart disease (p=0.007). A 2024 meta-analysis of 18 RCTs (134,144 participants) confirmed an 8% reduction in cardiovascular death (HR 0.92, 95% CI 0.85-0.99). Omega-3s are among the few supplements with consistent, strong evidence for reducing hard mortality endpoints.
+
+### Secondary Recommendations
+**PureGenomics UltraMultivitamin** `Supplement`
+> Comprehensive multivitamin with activated B vitamins (methylfolate, methylcobalamin), chelated minerals, and antioxidants including CoQ10 and alpha-lipoic acid. Targets common genetic polymorphisms affecting nutrient metabolism. While multivitamins don't directly reduce mortality, they serve as nutritional insurance to fill gaps in modern diets. A 2025 rapid review of 19 meta-analyses found benefits for cognition, blood pressure, and infection risk. Take 3 capsules daily with food.
+
+**Magnesium Glycinate** `Supplement`
+> Highly bioavailable chelated magnesium that is gentle on the stomach. Supports muscle relaxation, sleep quality, cardiovascular rhythm, and nervous system function. A 2024 umbrella meta-analysis showed magnesium supplementation significantly reduces blood pressure (SBP -1.25 mmHg, DBP -1.40 mmHg). Up to 50% of Americans are magnesium deficient. The glycinate form is particularly calming and ideal for evening use. Take 3 capsules before bed.
+
+**PureLean Fiber** `Supplement`
+> Comprehensive fiber blend including soluble and insoluble fibers (cellulose, partially hydrolyzed guar gum, flax seed, apple pectin, glucomannan). An umbrella review of 17 million individuals found convincing evidence (Class I) linking higher fiber intake to reduced CVD mortality. Highly suggestive evidence (Class II) supports reduced all-cause mortality. 95% of Americans don't meet fiber recommendations (~25-38g/day). Supports gut health, blood sugar balance, and satiety. Take 2 scoops 2-3 times daily with meals.
+
+**Creatine Monohydrate** `Supplement` (Not listed in marketplace)
+> The most studied ergogenic supplement, creatine supports ATP regeneration for muscle strength and power. A 2024 meta-analysis showed creatine plus resistance training significantly increases upper and lower body strength. For cognition, creatine showed positive effects on memory (SMD=0.31) and processing speed, particularly in stressed, sleep-deprived, or elderly individuals. Safe for long-term use at 3-5g daily. Supports muscle maintenance, brain bioenergetics, and healthy aging.
+
+**Exercise Protocol** `Lifestyle`
+> Zone 2 cardio 150 min/week (conversational pace where you can hold a conversation), strength training 2-3x/week focusing on compound movements (squats, deadlifts, presses, rows), and VO2 max training 1-2x/week. Exercise is the single most validated longevity intervention—even 15 min/day reduces all-cause mortality by 14%. Blue Zones research consistently shows physical activity is the common thread among long-lived populations.
+
+**Nutrition Protocol** `Lifestyle`
+> Protein 1.6-2.0 g/kg/day (prioritize at each meal for muscle protein synthesis), fiber 30-40g/day from diverse plant sources, hydration 30-40 mL/kg/day. No calories 3 hours before bed to support sleep quality and metabolic health. An umbrella review found convincing Class I evidence linking higher fiber intake to reduced CVD mortality.
+
+**Sleep Protocol** `Lifestyle`
+> Target 7-9 hours nightly with consistent sleep/wake times, even on weekends. Sleep is when cellular repair, hormone production, and memory consolidation occur. Poor sleep impairs insulin sensitivity, increases cortisol, and accelerates biological aging. No supplement can substitute for adequate, quality sleep—address this foundation first.
+
+### Evidence Sources
+- [Omega-3 Cardiovascular Meta-Analysis 2025](https://onlinelibrary.wiley.com/doi/10.1002/ctd2.70094) - 42 studies, 176,253 participants
+- [Omega-3 Cardiovascular Outcomes 2024](https://academic.oup.com/eurjpc/article/31/15/1863/7692830) - 18 RCTs, 134,144 participants
+- [Magnesium Blood Pressure Umbrella Meta-Analysis 2024](https://pubmed.ncbi.nlm.nih.gov/39280209/) - SBP -1.25 mmHg, DBP -1.40 mmHg
+- [Multivitamin Health Outcomes Rapid Review 2025](https://www.sciencedirect.com/science/article/pii/S1568163725003113) - 19 meta-analyses reviewed
+- [Fiber Mortality Umbrella Review 2024](https://www.sciencedirect.com/science/article/abs/pii/S026156142500175X) - Class I evidence for CVD mortality
+- [Creatine Cognition Meta-Analysis 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11275561/) - Memory SMD=0.31
+
+### Safety Considerations
+**Omega-3 Fatty Acids**
+- Hold 7-10 days before elective surgery (bleeding risk)
+- Use caution with bleeding disorders
+- High doses (>3g) may increase bleeding risk with anticoagulants
+
+**Magnesium**
+- Renal impairment (CKD Stage 4-5): Risk of hypermagnesemia—avoid or reduce dose
+- Separates absorption of quinolones, tetracyclines by 2-4 hours
+
+**Glucomannan (in fiber blends)**
+- Must take with adequate water
+- Contraindicated with esophageal strictures or dysphagia (obstruction risk)
+- Separate from other medications by 2 hours
+
+**Creatine**
+- Renal impairment (CKD Stage 4-5): May need dose adjustment—consult provider
+- Generally safe at 3-5g/day in healthy adults with adequate hydration
+
+**Pregnancy & Lactation**
+- Most protocols require modification during pregnancy—consult provider
+- Ensure prenatal vitamin replaces standard multivitamin (adequate folate, appropriate vitamin A form)
+- High-dose preformed vitamin A (retinol >10,000 IU): Teratogenic risk
+```
+
+### Cardiovascular
+
+```markdown
+## 2. Cardiovascular Issues
+**Protocol:** Cardiovascular Health Protocol
+
+### Primary Recommendation
+**CholestePure Plus** `Supplement`
+> CholestePure Plus provides phytosterols, berberine phytosome, and bergamot extract to support healthy lipid metabolism. Meta-analyses show phytosterol intakes of 2 g/day reduce LDL-cholesterol by 8-12%. A 2024 umbrella meta-analysis of 17 meta-analyses found phytosterol supplementation reduces LDL-C by -11.47 mg/dL (95% CI: -12.76, -10.17, p < 0.001). Berberine has been shown to significantly reduce total cholesterol and LDL-C in multiple clinical trials.
+
+### Secondary Recommendations
+**O.N.E. Omega** `Supplement`
+> Highly concentrated omega-3 fatty acids (EPA and DHA) in triglyceride form for optimal absorption. A 2025 meta-analysis of 42 studies (176,253 participants) showed omega-3 supplementation significantly reduced cardiovascular mortality (p=0.02), myocardial infarction (p=0.008), and coronary heart disease (p=0.007). Omega-3s reduce triglycerides, inflammation, and platelet aggregation—addressing multiple cardiovascular risk pathways simultaneously.
+
+**Ubiquinol-QH** `Supplement`
+> Ubiquinol is the active antioxidant form of CoQ10 with superior bioavailability. A meta-analysis of 45 RCTs showed CoQ10 supplementation significantly reduced systolic BP by -3.44 mmHg. In heart failure patients, systematic reviews demonstrate CoQ10 leads to significant reduction in mortality risk compared to placebo. The Q-SYMBIO trial showed reduced major adverse cardiovascular events with CoQ10 supplementation.
+
+**Mediterranean Diet** `Lifestyle`
+> The PREDIMED trial demonstrated a 30% reduction in cardiovascular events with Mediterranean diet—one of the largest effect sizes ever seen in a dietary intervention. Emphasis on olive oil, nuts, fish, vegetables, and whole grains while limiting processed foods and refined carbohydrates.
+
+**Superpower Advanced Blood Panel** `Testing` *(Check: service_request_history)* (Consider Heart Health panel as alternative too)
+> Comprehensive cardiovascular assessment including lipid panel (Total Cholesterol, LDL-C, HDL-C, Triglycerides), ApoB, Lp(a), hsCRP, and homocysteine. Establishes baseline and monitors response to interventions. Essential for identifying cardiovascular risk factors beyond standard lipid testing.
+> 
+### Conditional Recommendations
+**Red Yeast Rice + Clinician Review** `Rx` *(If LDL-C >160 mg/dL or ApoB >120 mg/dL; Check: patient_context.current_medications)* (Thorne Only)
+> For patients with significantly elevated LDL-C or ApoB who have not responded adequately to lifestyle and supplement interventions, red yeast rice contains naturally occurring monacolins (including monacolin K, which is identical to lovastatin). Meta-analyses show reductions of 20-30% in LDL-C. However, due to its statin-like mechanism, this requires clinician oversight, monitoring for muscle symptoms, and CoQ10 co-supplementation. May be appropriate before or as alternative to prescription statins.
+
+### Evidence Sources
+- [Phytosterols LDL Meta-Analysis 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11495771/) - 28 RCTs, LDL-C reduction -0.38 mmol/L
+- [CoQ10 Blood Pressure Meta-Analysis 2025](https://www.sciencedirect.com/science/article/pii/S2772487525000625) - 45 RCTs, SBP -3.44 mmHg
+- [CoQ10 Heart Failure Systematic Review](https://pubs.rsc.org/en/content/articlehtml/2023/fo/d3fo01255g) - Mortality reduction vs placebo
+- PREDIMED Trial (N Engl J Med 2013) - 30% CV event reduction
+
+### Safety Considerations
+**Berberine**
+- CYP3A4/2D6 substrate interactions (statins, cyclosporine, many others)
+- Contraindicated in pregnancy and lactation
+- Use caution with liver disease (hepatic metabolism)
+
+**Red Yeast Rice**
+- Statin-like mechanism—monitor for myopathy
+- Requires CoQ10 co-supplementation
+- Liver function monitoring recommended
+
+**Omega-3 (high dose >3g)**
+- Increased bleeding risk with warfarin, DOACs, aspirin
+```
+
+### Vitamin D
+
+```markdown
+## 3. Vitamin D
+**Protocol:** Vitamin D Optimization Protocol
+
+### Primary Recommendation
+**Vitamin D3 (1,000-2,000 IU daily)** `Supplement`
+> D3 (cholecalciferol) is the naturally preferred and most bioactive form of vitamin D. A 2024 consensus statement supports daily vitamin D supplementation of 1,000-2,000 IU to raise serum 25(OH)D to optimal levels. The Endocrine Society and most American guidelines recommend maintaining levels of 30-50 ng/mL (75-125 nmol/L). Dosing should be adjusted based on baseline levels: severely deficient (<20 ng/mL) may need 4,000-5,000 IU daily for 8-12 weeks, then maintenance.
+
+### Secondary Recommendations
+**Superpower Blood Panel with Vitamin D Retest** `Testing` *(Check: service_request_history)*
+> Confirms repletion to target levels (30-50 ng/mL per Endocrine Society guidelines) and allows dose adjustment for maintenance. Retest after 8-12 weeks of supplementation to verify adequacy. Monitor calcium levels in patients with granulomatous disease or primary hyperparathyroidism.
+
+**Sun Exposure Protocol** `Lifestyle`
+> UVB rays trigger natural vitamin D synthesis in skin. 10-20 minutes of midday sun (10am-2pm) on arms and legs can produce meaningful vitamin D, depending on latitude, season, and skin tone. Darker skin and northern latitudes require longer exposure. This complements but rarely replaces supplementation for those with documented deficiency. Always avoid sunburn.
+
+**Vitamin D-Rich Foods** `Lifestyle`
+> Dietary sources can contribute 600-1,000 IU daily when prioritized. Fatty fish are the richest natural sources: wild salmon (600-1,000 IU/3oz), mackerel (400 IU/3oz), sardines (250 IU/3oz), and cod liver oil (1,360 IU/tbsp). Egg yolks provide 40 IU each (pasture-raised contain 3-4x more). Fortified foods (milk, orange juice, cereals) typically add 100 IU per serving. While diet alone rarely corrects deficiency, regular consumption of fatty fish 2-3x weekly supports maintenance after repletion and provides synergistic omega-3 benefits.
+
+### Evidence Sources
+- [2024 Consensus Statement on Vitamin D](https://academic.oup.com/edrv/article/45/5/625/7659127) - Endocrine Reviews
+- [Vitamin D 2000 IU Evidence Review](https://pmc.ncbi.nlm.nih.gov/articles/PMC10857599/)
+- Endocrine Society Clinical Practice Guidelines
+
+### Safety Considerations
+- Monitor calcium in granulomatous disease (sarcoidosis) or primary hyperparathyroidism
+- Toxicity rare below 10,000 IU/day in healthy adults
+- High-dose supplementation requires periodic monitoring
+```
+
+### Male Hormones
+
+```markdown
+## 4a. Low Testosterone (Normal E2, Normal SHBG) (MEN ONLY)
+**Protocol:** Testosterone Optimization Protocol
+
+### Primary Recommendation
+**Enclomiphene Citrate** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> By blocking estrogen's negative feedback at the hypothalamus, enclomiphene stimulates endogenous testosterone production while preserving fertility. A 2024-2025 meta-analysis of 819 patients across 10 RCTs showed SERM therapy significantly improved total testosterone with a mean difference of 273.76 ng/dL (95% CI: 191.87-355.66 ng/dL; p < 0.01), as well as LH and FSH. Enclomiphene had only 3.45% adverse event rate compared to 18.18% with clomiphene.
+
+### Secondary Recommendations
+**EmulsiSorb K2/D3 liquid** `Supplement`
+> Vitamin D receptors exist on Leydig cells, and studies show men with sufficient vitamin D have significantly higher testosterone levels. K2 ensures calcium goes to bones and away from arteries, supporting both bone and cardiovascular health while optimizing the hormonal environment for testosterone production.
+
+**Growth Hormone Support** `Supplement`
+> Contains L-arginine (1,000 mg) and ornithine alpha-ketoglutarate (500 mg) to naturally support growth hormone production. Supports physical vitality, lean muscle mass, and recovery. Synergistic with testosterone optimization for overall male hormonal health and body composition improvements.
+
+**Superpower Advanced Blood Panel** `Testing` *(Check: service_request_history)* (This depends on if we have a dedicated retest page in the app flow)
+> Complete hormonal baseline including Total Testosterone, Free Testosterone, SHBG, Estradiol, LH, FSH, and Prolactin. Essential for diagnosis, treatment selection, and monitoring response to therapy. Identifies whether hypogonadism is primary (testicular) or secondary (pituitary/hypothalamic).
+
+**Sleep Optimization** `Lifestyle`
+> Testosterone is primarily produced during deep sleep—men with sleep apnea or poor sleep quality have significantly lower testosterone. Prioritize 7-9 hours of quality sleep with consistent sleep/wake times. Address sleep apnea if present. Keep bedroom cool, dark, and screen-free before bed.
+
+### Evidence Sources
+- [Enclomiphene/Clomiphene Meta-Analysis 2024-2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12510335/) - 10 RCTs, 819 patients, +273.76 ng/dL
+- [Enclomiphene Safety and Efficacy](https://pmc.ncbi.nlm.nih.gov/articles/PMC11491226/) - 3.45% adverse event rate
+
+### Safety Considerations
+**Enclomiphene Citrate**
+- Not FDA-approved (compounded only)
+- Monitor hematocrit (can increase RBC production)
+- Contraindicated with history of venous thromboembolism
+- Can cause visual disturbances—discontinue if vision changes occur
+- Contraindicated in liver disease
+- Not for use in women
+
+**Vitamin K2**
+- K2 directly antagonizes warfarin's mechanism—can cause dangerous INR changes
+- Contraindicated for patients on warfarin without close INR monitoring and provider guidance
+
+---
+
+## 4b. Low Testosterone (High E2, Normal SHBG) (MEN ONLY)
+**Protocol:** Testosterone + Estrogen Balance Protocol
+
+### Primary Recommendation
+**Enclomiphene Citrate** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> Enclomiphene blocks estrogen feedback without adding exogenous testosterone that can aromatize to more estrogen. By selectively modulating estrogen receptors at the hypothalamus, it stimulates LH and FSH release, increasing endogenous testosterone production while addressing the elevated estrogen environment. Particularly effective when high E2 is suppressing the HPG axis.
+
+### Secondary Recommendations
+**Calcium D-Glucarate** `Supplement`
+> Calcium D-glucarate inhibits beta-glucuronidase, an enzyme in the gut that allows conjugated estrogen to be reabsorbed. By blocking this enzyme, it supports estrogen elimination through the gut and helps maintain a healthier testosterone-to-estrogen ratio.
+
+**Boron** `Supplement`
+> Studies suggest boron at 6-10 mg daily can reduce SHBG by ~10% and increase free testosterone. It also has anti-estrogenic effects by supporting estrogen metabolism. Additionally supports bone health and reduces systemic inflammation.
+
+**Superpower Advanced Blood Panel** `Testing` *(Check: service_request_history)* (This depends on if we have a dedicated retest page in the app flow)
+> Complete hormonal baseline including Total Testosterone, Free Testosterone, SHBG, Estradiol, LH, FSH, and Prolactin. Monitor estradiol levels closely—target is to normalize E2 while increasing testosterone. Retest 6-8 weeks after intervention.
+
+**Body Composition Optimization** `Lifestyle`
+> Aromatase enzyme (converts testosterone to estrogen) is concentrated in adipose tissue. Reducing body fat through resistance training and caloric optimization directly reduces aromatization. Prioritize compound strength movements and adequate protein (1.6-2.0 g/kg/day) to preserve muscle mass.
+
+### Evidence Sources
+- [Enclomiphene/Clomiphene Meta-Analysis 2024-2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12510335/)
+- [Enclomiphene Safety and Efficacy](https://pmc.ncbi.nlm.nih.gov/articles/PMC11491226/)
+
+### Safety Considerations
+See Section 4a for Enclomiphene safety considerations.
+```
+
+### Metabolic + Insulin Resistance
+
+```markdown
+## 5. Metabolic and Insulin Resistance
+**Protocol:** Metabolic Reset Protocol
+
+### Primary Recommendation
+**Semaglutide (GLP-1) Therapy** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> GLP-1 agonists enhance insulin secretion when glucose is elevated, slow gastric emptying, and reduce glucagon. A meta-analysis showed semaglutide achieved 12.1% relative body weight reduction vs. placebo, with 33.4% of participants achieving ≥20% weight loss. In a 2024 Nature Medicine systematic review, semaglutide was identified as one of the most effective medications for reducing body weight and obesity-related complications. Also improves insulin sensitivity and glycemic control.
+
+### Secondary Recommendations
+**Berberine UltraSorb** `Supplement`
+> Berbevis berberine phytosome with enhanced bioavailability (4x greater than standard berberine). A 2024 meta-analysis of 50 studies with 4,150 participants showed berberine significantly reduced fasting plasma glucose (-0.59 mmol/L), 2h postprandial glucose (-1.57 mmol/L), and HOMA-IR. Works via AMPK activation, insulin receptor upregulation, and gut microbiota modulation without causing hypoglycemia.
+
+**Metabolic Health Panel** `Testing` *(Check: service_request_history)* (This depends on if we have a dedicated retest page in the app flow)
+> Comprehensive metabolic assessment including Adiponectin (insulin-sensitizing hormone—low levels indicate insulin resistance), Leptin (satiety hormone—elevated levels suggest leptin resistance), Cardio IQ Insulin Resistance Panel with Score (quantifies insulin resistance severity), and Fructosamine (2-3 week average glucose control). Provides deeper insight than standard glucose/HbA1c testing and guides intervention intensity.
+
+**Exercise** `Lifestyle`
+> Exercise is the most potent insulin sensitizer—a single bout of exercise can improve insulin sensitivity for 24-48 hours. Aim for 150 min/week moderate aerobic activity plus 2 resistance sessions. Walking after meals blunts glucose spikes. Consistent daily movement matters more than occasional intense workouts.
+
+**Navar Diet Protocol** `Lifestyle`
+> A carbohydrate-conscious approach focusing on glycemic control: Prioritize protein (1.6+ g/kg/day) and non-starchy vegetables at every meal. Limit refined carbohydrates and added sugars—choose whole food carbs (legumes, intact grains) over processed options. Front-load carbohydrates earlier in the day when insulin sensitivity is highest. Include healthy fats (olive oil, avocado, nuts) to slow gastric emptying and blunt glucose spikes. Consider time-restricted eating (12-16 hour overnight fast) to improve insulin sensitivity. Avoid eating within 3 hours of bedtime.
+> 
+> **Cinnamon WS** `Supplement`
+> Water-soluble cinnamon extract designed to support healthy blood sugar levels and glucose metabolism. The water-soluble form provides effective insulin-sensitizing benefits without the hepatotoxicity concerns of fat-soluble cinnamon compounds. Clinical studies show cinnamon improves fasting glucose and insulin sensitivity. Rich in polyphenols providing additional antioxidant protection against oxidative stress associated with metabolic dysfunction.
+
+### Evidence Sources
+- [Berberine Glucose Meta-Analysis 2024](https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2024.1455534/full) - 50 studies, 4,150 participants
+- [Semaglutide Weight Loss Meta-Analysis](https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2022.935823/full) - 10.09% body weight reduction
+- [GLP-1 Weight Loss Comparative Review 2025](https://www.nature.com/articles/s41591-025-03978-z) - Nature Medicine
+- [Cinnamon and Glucose Metabolism Review](https://pubmed.ncbi.nlm.nih.gov/31826929/) - Improves fasting glucose and insulin sensitivity
+
+### Safety Considerations
+**Semaglutide (GLP-1 Therapy)**
+- **Black Box Warning**: Risk of thyroid C-cell tumors. Contraindicated in patients with personal or family history of medullary thyroid carcinoma (MTC) or Multiple Endocrine Neoplasia syndrome type 2 (MEN2)
+- Contraindicated with history of pancreatitis
+- Must discontinue 2 months before planned pregnancy (teratogenic risk)
+- Slows gastric emptying—affects timing and absorption of oral medications
+- Increased risk of gallbladder disease
+
+**Berberine**
+- CYP3A4/2D6 substrate interactions
+- Contraindicated in pregnancy and lactation
+
+**Cinnamon WS**
+- Water-soluble form preferred to avoid hepatotoxicity of fat-soluble coumarin compounds
+- Generally well-tolerated at recommended doses
+- Use caution with diabetes medications (additive hypoglycemic effect)
+```
+
+### Longevity
+
+```markdown
+## 6. Longevity
+**Protocol:** Longevity Optimization Protocol
+
+### Primary Recommendation
+**NAD+ Injectable** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> NAD+ is essential for sirtuin activity, DNA repair, and mitochondrial function—all of which decline with age. Clinical trials consistently show NMN/NR supplementation raises NAD+ levels by 130-150%. A 2024 meta-analysis of 12 studies (513 participants) confirmed significant NAD+ elevation with supplementation. While human longevity data is still emerging and clinical benefit data is mixed, NAD+ supports cellular energy production and repair mechanisms that decline approximately 50% by middle age. Direct injection bypasses conversion limitations of oral precursors.
+
+### Secondary Recommendations
+**Superpower OrganAge Test** `Testing` *(Check: service_request_history)* (This depends on if we have a dedicated retest page in the app flow)
+> Epigenetic clocks measure biological vs. chronological age based on DNA methylation patterns. Provides a comprehensive view of aging rate and response to interventions. More actionable than standard biomarkers for longevity optimization. Retest annually to track biological aging trajectory.
+
+**Ubiquinol-QH** `Supplement`
+> Mitochondrial function is a key driver of biological aging. Ubiquinol supports ATP production and acts as a powerful antioxidant in mitochondrial membranes. Administration of CoQ10 plus selenium in healthy elderly participants showed significantly reduced cardiovascular mortality over 10 years of follow-up. Supports cellular energy and reduces oxidative stress.
+
+**Homocysteine Factors** `Supplement`
+> Provides methylated B-vitamins (B6, B12 as methylcobalamin, folate as L-5-MTHF) and betaine for optimal methylation. Methylation is essential for DNA maintenance and epigenetic regulation—key processes in biological aging. High homocysteine indicates poor methylation, which accelerates biological aging. Supports cardiovascular health and cellular repair mechanisms.
+
+**O.N.E. Omega** `Supplement`
+> Omega-3 fatty acids have consistent evidence for reducing cardiovascular mortality—a hard endpoint. A 2025 meta-analysis (176,253 participants) showed significant reductions in CV death (p=0.02) and MI (p=0.008). Omega-3s also support brain structure, reduce inflammation, and maintain cell membrane fluidity—all relevant to healthy aging.
+
+**Nrf2 Detox** `Supplement`
+> Activates the Nrf2 pathway—the master regulator of antioxidant and detoxification genes. Contains sulforaphane precursors, green tea catechins, and curcumin. Nrf2 activation declines with age, contributing to oxidative stress accumulation. Supports the body's own antioxidant defenses rather than simply providing exogenous antioxidants.
+
+**Exercise** `Lifestyle`
+> Exercise is the single most validated longevity intervention—even 15 min/day reduces all-cause mortality by 14%. Blue Zones research consistently shows physical activity is the common thread among long-lived populations. Both aerobic (Zone 2 cardio) and resistance training provide independent benefits. VO2 max is the strongest predictor of all-cause mortality.
+
+**Caloric Optimization** `Lifestyle`
+> Caloric restriction extends lifespan in every species tested. While extreme restriction isn't sustainable, avoiding caloric excess is achievable. Time-restricted eating (12-16 hour overnight fast) provides some CR benefits without chronic restriction. Avoid eating 3+ hours before bed. Prioritize protein (1.6+ g/kg) to maintain muscle during any caloric deficit.
+
+### Evidence Sources
+- [NMN Glucose and Lipid Metabolism Meta-Analysis 2024](https://pubmed.ncbi.nlm.nih.gov/39116016/) - 12 studies, 513 participants
+- [NMN Supplementation Clinical Variability 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11205942/)
+- [NAD+ Boosters Comprehensive Review](https://pmc.ncbi.nlm.nih.gov/articles/PMC10692436/)
+- [NMN Safety and Antiaging Effects](https://www.sciencedirect.com/science/article/pii/S2161831323013595)
+
+### Safety Considerations
+**NAD+ Injectable**
+- Limited long-term safety data in humans
+- Can cause flushing, nausea during administration
+- Emerging evidence—clinical benefits beyond NAD+ elevation still being established
+```
+
+### Iron
+
+```markdown
+## 7. Iron
+**Protocol:** Iron Repletion Protocol
+
+### Primary Recommendation
+**OptiFerin-C** `Supplement`
+> Iron bisglycinate (28 mg) with vitamin C (100 mg) for enhanced absorption and tolerability. A systematic review and meta-analysis of 17 RCTs showed ferrous bisglycinate resulted in higher hemoglobin concentrations in pregnant women (SMD 0.54 g/dL, p < 0.01) and significantly fewer GI adverse events compared to other iron forms (IRR 0.36; 95% CI 0.17-0.76). Iron absorption is 2-4x higher than ferrous citrate or phosphate, with better tolerability due to chelated form.
+
+### Secondary Recommendations
+**Iron-Rich Foods** `Lifestyle`
+> Prioritize heme iron sources (red meat, organ meats, shellfish, dark poultry) which are 2-3x more bioavailable than plant sources. Beef liver is the most iron-dense food (6.5 mg per 3 oz). For plant-based iron: legumes (lentils, chickpeas), dark leafy greens (spinach, kale), fortified cereals, pumpkin seeds, and blackstrap molasses. Cooking in cast iron pans can increase iron content of acidic foods by 10-20x.
+
+**Superpower Blood Panel** `Testing` *(Check: service_request_history)* (This depends on if we have a dedicated retest page in the app flow)
+> Monitor ferritin, serum iron, TIBC, and transferrin saturation. Target ferritin of 50-100 ng/mL for optimal function (not just above "normal" range). Retest after 8-12 weeks of supplementation to assess repletion and adjust protocol. Also screen for underlying causes if repletion is slow.
+
+**Absorption Optimization** `Lifestyle`
+> Pair iron-rich foods or supplements with vitamin C (citrus, bell peppers, tomatoes) to enhance absorption by 2-6x. Take iron supplements on an empty stomach when possible for best absorption. Avoid calcium-rich foods, coffee, tea, and dairy within 2 hours of iron intake—these can reduce absorption by 50-60%. Phytates (in whole grains, legumes) and polyphenols (in coffee, tea) are the strongest inhibitors. Space iron supplements away from antacids and acid-blocking medications.
+
+**Probiotic G.I.** `Supplement`
+> Gut health significantly impacts iron absorption. Many people have impaired iron absorption due to gut inflammation or dysbiosis. Contains 10 billion CFU of 6 probiotic strains including Lactobacillus and Bifidobacterium species that support intestinal integrity and nutrient absorption. Optimizing gut health is essential for sustainable iron repletion.
+
+### Evidence Sources
+- [Iron Bisglycinate Meta-Analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC10331582/) - 17 RCTs, SMD 0.54 g/dL hemoglobin
+- [Ferrous Bisglycinate vs Sulfate Review](https://academic.oup.com/nutritionreviews/article/81/8/904/7024657) - 2-4x better absorption
+
+### Safety Considerations
+**Iron Supplementation**
+- Only supplement with documented iron deficiency
+- Contraindicated in hemochromatosis and iron overload conditions
+- Thalassemia patients may have high iron stores despite anemia—check ferritin before supplementing
+- Separates levothyroxine, quinolone absorption by 4 hours
+```
+
+### Weight Loss
+
+```markdown
+## 8. Weight Loss
+**Protocol:** Medical Weight Loss Protocol
+
+### Primary Recommendation
+**Semaglutide (GLP-1) Therapy** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> GLP-1 agonists reduce hunger at the brain level, slow gastric emptying, and improve insulin sensitivity. Systematic review and meta-analysis found semaglutide achieved long-term absolute body weight reduction of -12.3 kg (95% CI: -13.6 to -11.0). Clinically effective weight loss (≥5%) was achieved by 82.9-88.7% of participants on 2.4 mg weekly. A 2025 Nature Medicine review identified tirzepatide and semaglutide as the most effective medications for reducing body weight.
+
+### Secondary Recommendations
+**Berberine UltraSorb** `Supplement`
+> Supports healthy glucose and lipid metabolism during weight loss. A 2024 meta-analysis showed berberine significantly reduced body weight along with improving metabolic markers. Activates AMPK (the body's metabolic master switch), supports fat oxidation, and promotes GLP-1 secretion from intestinal L-cells—potentially enhancing GLP-1 therapy effects.
+
+**Resistance Training** `Lifestyle`
+> Exercise during GLP-1 therapy is critical to preserve lean muscle mass—without it, up to 40% of weight loss can be muscle. Resistance training 2-3x/week with compound movements (squats, deadlifts, presses) preserves metabolically active tissue and prevents the "skinny fat" outcome common with diet-only approaches.
+
+**PureLean Fiber** `Supplement`
+> Comprehensive fiber blend that promotes satiety, slows gastric emptying, and feeds beneficial gut bacteria. Fiber is critical during weight loss for maintaining gut health and regular bowel movements (which can slow on GLP-1 therapy). Glucomannan specifically has RCT evidence for modest weight loss effects.
+
+**Probiotic 50B** `Supplement`
+> High-potency 50 billion CFU probiotic with 7 researched strains. Systematic reviews demonstrate short-term consumption of probiotics has favorable effects on obesity indicators including weight and BMI. Supports gut microbiome diversity during the metabolic stress of weight loss.
+
+**Superpower Metabolic Panel** `Testing` *(Check: service_request_history)*
+> Monitor metabolic markers during weight loss: fasting glucose, HbA1c, lipid panel, liver enzymes (ALT/AST), and hormones (thyroid, testosterone). GLP-1 therapy dramatically improves metabolic markers—tracking provides motivation and ensures safe progress. Also identifies any metabolic barriers to weight loss.
+
+**Protein Prioritization** `Lifestyle`
+> During weight loss, muscle loss is accelerated without adequate protein. Target 1.6-2.0 g/kg ideal body weight daily, distributed across meals (30-40g per meal for optimal muscle protein synthesis). Protein is also the most satiating macronutrient, supporting appetite control alongside GLP-1 therapy.
+
+### Evidence Sources
+- [Semaglutide Weight Loss Meta-Analysis](https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2022.935823/full) - -10.09% body weight
+- [GLP-1 Weight Loss Comparative Review 2025](https://www.nature.com/articles/s41591-025-03978-z) - Nature Medicine
+- [Berberine Glucose Meta-Analysis 2024](https://www.frontiersin.org/journals/pharmacology/articles/10.3389/fphar.2024.1455534/full)
+
+### Safety Considerations
+**Semaglutide (GLP-1 Therapy)**
+- See Section 5 (Metabolic) for full Semaglutide safety considerations including Black Box Warning for thyroid C-cell tumors
+
+**Protein Targets**
+- Renal impairment (CKD Stage 4-5): High protein targets (1.6-2.0 g/kg) may need reduction—consult nephrologist
+- Standard weight loss protein recommendations assume normal kidney function
+```
+
+### Energy
+
+```markdown
+## 9. Energy
+**Protocol:** Cellular Energy Restoration Protocol
+
+### Primary Recommendations
+**NAD+ Injectable** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> NAD+ is the central coenzyme for mitochondrial energy production. Levels decline ~50% by middle age, directly contributing to fatigue. NAD+ supports ATP synthesis, sirtuin activity, and cellular repair. Direct injection bypasses conversion limitations of oral precursors (NMN/NR) and provides immediate bioavailability. Particularly effective for persistent fatigue unresponsive to lifestyle and supplement interventions.
+
+### Secondary Recommendations
+**Ubiquinol-QH** `Supplement`
+> Ubiquinol is the active form of CoQ10, essential for mitochondrial ATP production. As we age, the body's ability to convert CoQ10 to ubiquinol declines, leading to reduced energy. Meta-analyses confirm CoQ10 supports cardiovascular function and cellular energy production. Superior bioavailability compared to ubiquinone ensures optimal delivery to tissues where energy production is most critical.
+
+**Sleep Hygiene** `Lifestyle`
+> Poor sleep is the #1 cause of fatigue—address this before supplementation. Consistent sleep/wake times (even weekends), dark cool bedroom (65-68°F), no screens 1 hour before bed, no caffeine after 12pm. Target 7-9 hours nightly. Consider sleep study if snoring, gasping, or unrefreshing sleep despite adequate hours.
+
+**Magnesium Glycinate** `Supplement`
+> Magnesium is required for ATP synthesis—technically, ATP is always bound to magnesium in the body. Up to 50% of Americans are deficient. Magnesium also supports sleep quality, which directly impacts daytime energy. The glycinate form is well-absorbed and calming, making it ideal for evening use to support both sleep and energy restoration.
+
+**Ashwagandha** `Supplement`
+> Adaptogenic herb that reduces cortisol and supports stress resilience. Chronic stress depletes energy through elevated cortisol and disrupted sleep. A 2024 meta-analysis of 15 studies (873 participants) showed ashwagandha significantly reduces cortisol (effect size μ=-2.36, p<0.0001) with 500-600 mg/day showing optimal benefits for energy and stress management.
+
+**Comprehensive Fatigue Panel** `Testing` *(Check: service_request_history)*
+> Fatigue has many causes often missed on standard panels. Comprehensive workup including thyroid panel (TSH, Free T3, Free T4), iron studies (ferritin—target >50 ng/mL, not just "normal"), vitamin D, B12, fasting glucose, and cortisol (AM). Root cause identification guides targeted intervention.
+
+**Movement & Light Exposure** `Lifestyle`
+> Morning sunlight (within 30 min of waking) sets circadian rhythm and improves alertness throughout the day. Regular physical activity paradoxically increases energy levels—even 20-30 minutes of walking can reduce fatigue. Avoid prolonged sitting; movement breaks every hour support sustained energy.
+
+### Evidence Sources
+- [Ashwagandha Cortisol Meta-Analysis 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC12242034/) - 15 studies, 873 participants, μ=-2.36
+- [Ashwagandha Stress Review](https://pubmed.ncbi.nlm.nih.gov/39348746/)
+- [NMN Glucose and Lipid Metabolism Meta-Analysis 2024](https://pubmed.ncbi.nlm.nih.gov/39116016/)
+
+### Safety Considerations
+**NAD+ Injectable**
+- Limited long-term safety data in humans
+- Can cause flushing, nausea during administration
+- Emerging evidence—clinical benefits beyond NAD+ elevation still being established
+```
+
+### Gut Health
+
+```markdown
+## 10. Gut Health
+**Protocol:** Gut Restoration Protocol
+
+### Primary Recommendation
+**Gut Microbiome Test Kit** `Testing` *(Check: service_request_history—skip if previously purchased)*
+> Comprehensive stool analysis identifying bacterial composition, diversity, and dysbiosis markers. This is the essential first step—blind supplementation without knowing your microbiome composition is inefficient. Reveals overgrowth or deficiency patterns that guide targeted probiotic and prebiotic selection. Identifies SIBO markers, inflammatory markers, digestive capacity, and pathogens. Personalized intervention based on results is far more effective than generic protocols.
+
+### Secondary Recommendations
+**G.I. Integrity** `Supplement`
+> Combines L-glutamine (1,000 mg), N-acetyl-D-glucosamine (500 mg), gamma oryzanol, and aloe vera to support intestinal barrier integrity. Glutamine is the primary fuel for enterocytes and supports mucosal repair. Particularly important if testing reveals intestinal permeability or inflammatory markers.
+
+**Probiotic 50B** `Supplement`
+> 50 billion CFU of 7 researched strains including Lactobacillus rhamnosus GG (one of the most clinically validated strains). A 2024 umbrella meta-analysis found probiotic supplementation significantly reduced diarrhea risk (RR 0.44), nausea (RR 0.59), and epigastric pain. Strain selection can be optimized based on microbiome test results.
+
+**Fermented Foods** `Lifestyle`
+> Include fermented foods (yogurt, kefir, sauerkraut, kimchi, miso) daily. These provide live bacteria and postbiotics that support gut ecosystem health. A Stanford study showed fermented food consumption increased microbiome diversity and reduced inflammatory markers within 10 weeks.
+
+**Poly-Prebiotic Powder** `Supplement`
+> Provides diverse prebiotic fibers (inulin, arabinogalactans, larch) to feed beneficial bacteria. Unlike single-fiber prebiotics, this supports multiple beneficial species. Prebiotics are often more important than probiotics—you're feeding the bacteria you already have, not trying to colonize with new ones.
+
+**Celiac & Food Sensitivity Panel** `Testing` *(Check: service_request_history)*
+> If gut symptoms persist despite interventions, screen for celiac disease (anti-tTG IgA, total IgA) and food sensitivities. Celiac affects ~1% of the population but is underdiagnosed. Gluten sensitivity and lactose intolerance are common drivers of gut symptoms that require dietary modification, not supplementation.
+
+**Fiber Diversity** `Lifestyle`
+> The gut microbiome thrives on dietary fiber diversity—aim for 30+ different plant foods per week. Each plant type feeds different beneficial bacterial species. Fiber has Class I evidence for reducing CVD mortality and is the single most important dietary factor for gut health.
+
+### Evidence Sources
+- [Probiotics GI Disorders Umbrella Meta-Analysis 2025](https://link.springer.com/article/10.1186/s40001-025-02788-w)
+- [Probiotics Intestinal Barrier Meta-Analysis](https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2023.1143548/full)
+- Stanford Fermented Foods Study (Cell 2021)
+
+### Safety Considerations
+- Probiotics generally well-tolerated
+- May cause initial gas/bloating as microbiome adjusts
+- Immunocompromised patients should consult provider before probiotic use
+```
+
+### Skin and Hair Health
+
+```sql
+## 11. Skin and Hair Health
+**Protocol:** Skin & Hair Vitality Protocol
+
+### Primary Recommendation
+**GHK-CU Cream** `Rx` *(Check: patient_context.current_medications—skip if already prescribed)*
+> GHK-Cu (copper peptide) is a naturally occurring tripeptide with powerful regenerative effects on skin. Clinical studies demonstrate it stimulates collagen synthesis, promotes wound healing, and has anti-aging effects by activating genes involved in tissue remodeling. Research shows GHK-Cu increases collagen production by up to 70%, elastin by 40%, and decorin by 80% in human fibroblasts. It also promotes angiogenesis, nerve regeneration, and hair follicle growth. The copper peptide has antioxidant and anti-inflammatory properties that protect against oxidative damage and photoaging. Topical application delivers direct benefits to skin without systemic effects.
+
+### Secondary Recommendations
+**Hyaluronic Acid** `Supplement`
+> Oral hyaluronic acid supplementation has been shown in clinical trials to increase skin moisture and reduce wrinkle depth. Hyaluronic acid holds up to 1000x its weight in water, supporting skin hydration from within. Also supports joint lubrication and overall connective tissue health. Addresses skin dryness and promotes supple, hydrated skin.
+
+**Sun Protection** `Lifestyle`
+> UV damage is the #1 cause of skin aging—daily SPF 30+ on face and hands is non-negotiable. Photoaging accounts for up to 90% of visible skin changes attributed to aging. Consistent daily sunscreen use has been shown to prevent and even reverse signs of skin aging.
+
+**Ligament Restore** `Supplement`
+> Contains BioCell Collagen (hydrolyzed collagen complex), glucosamine, L-proline, L-lysine, and silica for comprehensive connective tissue support. Provides building blocks for collagen synthesis throughout skin, hair, and nails. A meta-analysis of 26 RCTs (1,721 participants) showed improvements in skin elasticity (pooled effect size 0.72, p<0.00001) and hydration (effect size 0.63, p<0.00001).
+
+**O.N.E. Omega** `Supplement`
+> Omega-3 fatty acids support skin barrier function and reduce inflammation that accelerates skin aging. EPA and DHA are incorporated into cell membranes, improving skin hydration and reducing UV-induced damage. Also supports scalp health and may reduce inflammatory hair loss conditions.
+
+**Gut Microbiome Test Kit** `Testing` *(Check: service_request_history—skip if previously purchased)* 
+> The gut-skin axis is increasingly recognized in dermatology. Dysbiosis and intestinal permeability contribute to inflammatory skin conditions (acne, eczema, rosacea) and can impair nutrient absorption affecting hair health. If skin/hair issues persist despite topical and nutritional interventions, gut assessment may reveal underlying drivers.
+
+**Protein & Nutrient Optimization** `Lifestyle`
+> Hair is 95% keratin (a protein)—inadequate protein intake directly causes hair thinning. Target 1.2-1.6 g/kg/day minimum. Ensure adequate zinc (oysters, beef, pumpkin seeds), biotin (eggs, nuts), and iron. Restrictive diets often cause hair loss 2-3 months later (telogen effluvium). Address nutritional foundations before supplements.
+
+### Evidence Sources
+- [GHK-Cu Skin Regeneration Review](https://www.mdpi.com/1422-0067/19/7/1987) - Comprehensive review of GHK-Cu mechanisms and clinical effects
+- [GHK Peptide Tissue Remodeling](https://pubmed.ncbi.nlm.nih.gov/24831048/) - Gene expression studies showing collagen, elastin, decorin upregulation
+- [Collagen Skin Aging Meta-Analysis](https://pmc.ncbi.nlm.nih.gov/articles/PMC10180699/) - 26 RCTs, 1,721 participants, elasticity ES=0.72
+- [Collagen Supplements RCT Review 2025](https://www.amjmed.com/article/S0002-9343(25)00283-9/abstract)
+
+### Safety Considerations
+**GHK-CU Cream**
+- Generally well-tolerated topically
+- Rare local irritation at application site
+- Avoid on open wounds or broken skin
+- Pregnancy/lactation: limited data—consult provider before use
+
+**Other Supplements**
+- Collagen supplements generally well-tolerated
+- Marine collagen: avoid with fish allergy
+- Hyaluronic acid: generally safe, rare GI upset
+```
+
+<aside>
+💡
+
+We’re not root causing the energy right now
+
+</aside>

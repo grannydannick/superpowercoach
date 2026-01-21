@@ -1,0 +1,75 @@
+# Superpower Coach RAG Workflow
+
+This project builds a retrieval-augmented workflow that:
+
+- Ingests member input (biomarkers, preferences, context, top protocols).
+- Retrieves protocol recommendations from `protocols.txt`.
+- Feeds everything into `prompt.txt` to generate a 30-day email series.
+
+## Files
+
+- `prompt.txt`: The email-generation prompt and formatting rules.
+- `analysis_flow.txt`: How protocols are determined from member data.
+- `protocols.txt`: Protocol library and recommendations.
+- `rag_workflow.py`: RAG pipeline + optional synthetic input generation.
+- `workflow.md`: Usage notes.
+
+## Quickstart
+
+```sh
+python rag_workflow.py \
+  --input /absolute/path/to/input.json \
+  --format prompt \
+  --output /absolute/path/to/combined_prompt.txt \
+  --rag-output /absolute/path/to/rag_protocols.json
+```
+
+The `combined_prompt.txt` output is ready to send to your LLM.
+
+## Free-Text Synthetic Input
+
+This mode uses an OpenAI-compatible API to turn free text into a synthetic
+member input JSON, then runs the RAG flow.
+
+```sh
+export OPENAI_API_KEY=your_key_here
+export OPENAI_MODEL=gpt-4o-mini
+
+python rag_workflow.py \
+  --free-text "33 year old female focused on weight loss" \
+  --synthetic-output /absolute/path/to/synthetic_input.json \
+  --output /absolute/path/to/combined_prompt.txt
+```
+
+Or create a `.env` file (recommended, gitignored):
+
+```
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4o-mini
+```
+
+Optional env vars:
+
+- `OPENAI_API_BASE` (default: `https://api.openai.com`)
+- `OPENAI_MODEL` (default: `gpt-4o-mini`)
+- `OPENAI_API_KEY` (required for `--free-text`)
+
+## Input Shape
+
+Your input JSON should include the top 3 protocols:
+
+```json
+{
+  "B": { "biomarker_summary": "..." },
+  "P": { "preferences": ["Energy", "Weight Loss"] },
+  "C": { "age": 45, "sex": "M" },
+  "PRO": [
+    {
+      "rank": 1,
+      "theme": "Metabolic/Insulin Resistance",
+      "protocol_name": "Metabolic Reset Protocol",
+      "evidence_source": "Biomarker"
+    }
+  ]
+}
+```

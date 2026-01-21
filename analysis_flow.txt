@@ -1,0 +1,498 @@
+# Analysis flow
+
+### Inputs:
+
+- [B] Biomarkers
+    - Raw biomarker data from output results
+    - Ranges
+- [P] Preferences
+    - Preference data based on questionnaire step ([here](https://www.notion.so/Pre-Built-Protocols-2e48444481d080e5b304f20ca489811a?pvs=21))
+    - Preference details and symptoms from the questionnaire follow ups ([here](https://www.notion.so/Pre-Built-Protocols-2e48444481d080e5b304f20ca489811a?pvs=21))
+- [C] Patient Context
+    - Patient context from the AI Dr
+
+```tsx
+  Updated AI Biomarker & Preference Analysis Workflow
+
+  ┌─────────────────────────────────────────────────────────────────────────────┐
+  │                              INPUTS                                         │
+  │  ┌───────────────┐   ┌───────────────┐   ┌────────────────────────────────┐ │
+  │  │ [B] BIOMARKERS│   │[P] PREFERENCES│   │    [C] PATIENT CONTEXT         │ │
+  │  │  + values     │   │  (4-5 rated)  │   │  (demographics, history, meds, │ │
+  │  │  + ranges     │   │  + symptoms   │   │   diet, supplements, etc.)     │ │
+  │  └───────────────┘   └───────────────┘   └────────────────────────────────┘ │
+  └─────────────────────────────────────────────────────────────────────────────┘
+                  │                   │                         │
+                  │                   │                         │
+                  ▼                   ▼                         │
+  ┌───────────────────────────────┐ ┌───────────────────────────┐
+  │  STEP 1: BIOMARKER            │ │  STEP 2: PREFERENCE       │
+  │  CLUSTERING                   │ │  EXTRACTION               │
+  │  ───────────────────────────  │ │  ───────────────────────  │
+  │  Uses: [B]                    │ │  Uses: [P]                │
+  │                               │ │                           │
+  │  • Flag out-of-range markers  │ │  • Filter to 4-5 ratings  │
+  │  • Group into themes          │ │  • Attach symptom data    │
+  │  • Score by severity          │ │  • Score symptom severity │
+  │  • Select TOP 5 themes        │ │                           │
+  └───────────────┬───────────────┘ └─────────────┬─────────────┘
+                  │                               │
+                  ▼                               │
+  ┌───────────────────────────────┐               │
+  │  STEP 1B: PATTERN ANALYSIS    │               │
+  │  ───────────────────────────  │               │
+  │  Uses: [B] clustered themes   │               │
+  │                               │               │
+  │  For each biomarker theme:    │               │
+  │  • Check for PAIRED markers   │               │
+  │    that indicate pathology    │               │
+  │  • Classify as:               │               │
+  │    - SIGNIFICANT PATTERN      │               │
+  │    - ISOLATED/TRANSITORY      │               │
+  │  • Calculate Pattern Strength │               │
+  │    Score (0-5)                │               │
+  │                               │               │
+  │  (See Pattern Rules below)    │               │
+  └───────────────┬───────────────┘               │
+                  │                               │
+                  └──────────────┬────────────────┘
+                                 ▼
+                  ┌───────────────────────────────────────────┐
+                  │  STEP 3: COMBINE                          │
+                  │  ─────────────────────────────────────    │
+                  │  Uses: [B] themes + [P] themes            │
+                  │                                           │
+                  │  5 Biomarker Themes (with pattern flags)  │
+                  │  + N Preference Themes                    │
+                  │  + FOUNDATIONS THEME (auto-added)         │
+                  │  (unordered, tagged by source)            │
+                  └─────────────────┬─────────────────────────┘
+                                    │
+                                    ▼
+                  ┌───────────────────────────────────────────┐
+                  │  STEP 4: PROTOCOL MATCHING                │
+                  │  ─────────────────────────────────────    │
+                  │  Uses: Combined themes + [C] for sex      │
+                  │                                           │
+                  │  BIOMARKER PROTOCOLS:    PREFERENCE:      │
+                  │  • Foundations ◄─NEW     • Weight Loss    │
+                  │  • Cardiovascular        • Energy         │
+                  │  • Vitamin D             • Gut Health     │
+                  │  • Male Sex Hormones     • Skin & Hair    │
+                  │  • Metabolic/Insulin                      │
+                  │  • Longevity                              │
+                  │  • Iron                                   │
+                  │                                           │
+                  │  No match? → AI-GENERATED PROTOCOL        │
+                  └─────────────────┬─────────────────────────┘
+                                    │
+                                    ▼
+                  ┌───────────────────────────────────────────┐
+                  │  STEP 5: DEDUPLICATION                    │
+                  │  ─────────────────────────────────────    │
+                  │  Uses: Matched themes + protocols         │
+                  │                                           │
+                  │  AI compares protocol content             │
+                  │  If >60% overlap → Merge themes           │
+                  │  (e.g., Metabolic + Weight Loss)          │
+                  │                                           │
+                  │  NOTE: Foundations does NOT merge with    │
+                  │  other protocols—it remains separate      │
+                  └─────────────────┬─────────────────────────┘
+                                    │
+                                    │◄──────────────────────────────────┐
+                                    ▼                                   │
+                  ┌───────────────────────────────────────────┐         │
+                  │  STEP 6: PRIORITY SCORING                 │         │
+                  │  ─────────────────────────────────────    │   ┌─────┴─────┐
+                  │  Uses: [B] + [P] + [C]                    │   │    [C]    │
+                  │                                           │   │  PATIENT  │
+                  │  Score ALL themes including Foundations   │   │  CONTEXT  │
+                  │  using appropriate rubric:                │   └───────────┘
+                  │                                           │
+                  │  • Biomarker themes → Standard rubric     │
+                  │  • Preference themes → Standard rubric    │
+                  │  • Foundations → Foundations rubric       │
+                  │    (See Foundations Scoring below)        │
+                  │                                           │
+                  │  CHECK: Does patient take ≥2 Foundations  │
+                  │  supplements? If YES → Exclude Foundations│
+                  │                                           │
+                  │  → Rank all themes by score               │
+                  └─────────────────┬─────────────────────────┘
+                                    │
+                                    ▼
+                  ┌───────────────────────────────────────────┐
+                  │  STEP 7: TOP 3 SELECTION                  │
+                  │  ─────────────────────────────────────    │
+                  │  Uses: Ranked themes                      │
+                  │                                           │
+                  │  Select #1, #2, #3 ranked themes          │
+                  │  All patients receive exactly 3 protocols │
+                  │  Foundations can be #1, #2, or #3         │
+                  └─────────────────┬─────────────────────────┘
+                                    │
+                                    │◄──────────────────────────────────┐
+                                    ▼                                   │
+                  ┌───────────────────────────────────────────┐         │
+                  │  STEP 8: PATIENT CONTEXT VALIDATION       │   ┌─────┴─────┐
+                  │  ─────────────────────────────────────    │   │    [C]    │
+                  │  Uses: [C] (heavy)                        │   │  PATIENT  │
+                  │                                           │   │  CONTEXT  │
+                  │  Check each recommendation against:       │   └───────────┘
+                  │  • Diet (vegetarian? allergies?)          │
+                  │  • Current supplements (already taking?)  │
+                  │  • Medications (interactions?)            │
+                  │  • Medical history (contraindications?)   │
+                  │  • Allergies + precautions                │
+                  │                                           │
+                  │  For Foundations: Remove individual items │
+                  │  patient already takes (if <2 items)      │
+                  │                                           │
+                  │  → Modify recommendations as needed       │
+                  └─────────────────┬─────────────────────────┘
+                                    │
+                                    ▼
+                  ┌───────────────────────────────────────────┐
+                  │              FINAL OUTPUT                 │
+                  │  ═══════════════════════════════════════  │
+                  │  #1 Priority Theme + Personalized Protocol│
+                  │  #2 Priority Theme + Personalized Protocol│
+                  │  #3 Priority Theme + Personalized Protocol│
+                  │                                           │
+                  │  (Always exactly 3 protocols)             │
+                  └───────────────────────────────────────────┘            
+```
+
+```tsx
+  ┌──────────────────────────┬────────────────┬─────────────────┬─────────────────────┐
+  │           Step           │ [B] Biomarkers │ [P] Preferences │ [C] Patient Context │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 1. Biomarker Clustering  │       ●        │                 │                     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 1B. Pattern Analysis     │       ●        │                 │                     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 2. Preference Extraction │                │        ●        │                     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 3. Combine (+Foundations)│       ●        │        ●        │                     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 4. Protocol Matching     │       ●        │        ●        │    ○ (sex only)     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 5. Deduplication         │                │                 │                     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 6. Priority Scoring      │       ●        │        ●        │          ●          │
+  │    (inc. Foundations)    │  (for inverse  │  (for inverse   │  (supplements,      │
+  │                          │   severity)    │   symptom score)│   chronic conds)    │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 7. Top 3 Selection       │                │                 │                     │
+  ├──────────────────────────┼────────────────┼─────────────────┼─────────────────────┤
+  │ 8. Context Validation    │                │                 │          ●          │
+  └──────────────────────────┴────────────────┴─────────────────┴─────────────────────┘
+  ● = Primary input  ○ = Partial/limited use
+```
+
+### Prioritization Rubric for Biomarker themes x Preference themes
+
+```tsx
+  ════════════════════════════════════════════════════════════════════════════════
+                           PRIORITY SCORING RUBRIC
+  ════════════════════════════════════════════════════════════════════════════════
+
+  Input
+
+  You will receive:
+  - Biomarker themes (up to 5): Each with abnormal biomarkers, values, and severity
+  - Preference themes (0-7): Each rated 4-5/5 with associated symptom data
+  - Patient context: Demographics, medical history, medications, diet, supplements, lifestyle
+  - Protocol data: Information about the specific recommendations contained within each protocol
+  - Foundations theme: Auto-added for all patients (unless excluded)
+
+  ────────────────────────────────────────────────────────────────────────────────
+                        STEP 1: BIOMARKER PATTERN ANALYSIS
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Before scoring, classify each biomarker cluster as SIGNIFICANT PATTERN or ISOLATED/TRANSITORY:
+
+  ┌─────────────────────┬────────────────────────────────────────────────────────────────────┐
+  │      Pattern        │                         Significant If                             │
+  ├─────────────────────┼────────────────────────────────────────────────────────────────────┤
+  │ Iron/Anemia         │ 2+ of: Low Ferritin, Low Iron, Low Hgb, Low Hct, Abnormal MCV,     │
+  │                     │ High/Low TIBC                                                      │
+  ├─────────────────────┼────────────────────────────────────────────────────────────────────┤
+  │ Cardiovascular      │ 2+ of: High ApoB, High LDL-C, Low HDL-C, High Triglycerides,       │
+  │                     │ High Lp(a), High hsCRP                                             │
+  ├─────────────────────┼────────────────────────────────────────────────────────────────────┤
+  │ Metabolic           │ High HbA1c alone OR 2+ of: High Glucose, High Insulin,             │
+  │                     │ High HOMA-IR, High Triglycerides, Low HDL                          │
+  ├─────────────────────┼────────────────────────────────────────────────────────────────────┤
+  │ Male Hormones       │ 2+ of: Low Total T, Low Free T, Abnormal LH/FSH, Abnormal SHBG,    │
+  │                     │ High/Low Estradiol                                                 │
+  ├─────────────────────┼────────────────────────────────────────────────────────────────────┤
+  │ Thyroid             │ Abnormal TSH + Abnormal Free T3 or Free T4                         │
+  ├─────────────────────┼────────────────────────────────────────────────────────────────────┤
+  │ Vitamin D           │ 25(OH)D < 30 ng/mL (alone sufficient)                              │
+  └─────────────────────┴────────────────────────────────────────────────────────────────────┘
+
+  Isolated/Transitory Markers (do NOT trigger protocols alone):
+  • MCV, MCH, MCHC, RDW (unless paired with Hgb/Hct/Iron abnormalities)
+  • Lymphocytes, Neutrophils, WBC (unless severely abnormal or in pattern)
+  • Single borderline values (<10% outside reference range)
+  • Commonly fluctuating markers: Cortisol, some vitamins, electrolytes
+
+  Pattern Strength Score (0-5):
+  • 5 = 3+ paired markers in significant pattern, severe magnitude
+  • 4 = 2-3 paired markers in significant pattern, moderate-severe
+  • 3 = 2 paired markers in significant pattern, mild-moderate
+  • 2-3 = Single significant marker (HbA1c, Vitamin D)
+  • 1 = Isolated marker, borderline abnormal
+  • 0 = No abnormalities or only transitory markers
+
+  ────────────────────────────────────────────────────────────────────────────────
+                   STEP 2: SCORING FACTORS — STANDARD THEMES
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Score each Biomarker and Preference theme 1-5 on these factors:
+
+  ┌──────────────────────┬────────┬──────────────────────────────────────────────────────────────────────────────────────┬──────────────────────────────────────────────────────────────────────────────┐
+  │        Factor        │ Weight │                                   Biomarker Themes                                   │                              Preference Themes                               │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+  │ Clinical Severity    │ 22.5%  │ How far out of range? How dangerous? (5=critical, 1=borderline)                      │ How severe are symptoms? (5=debilitating, 1=minor)                           │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+  │ Patient Importance   │ 22.5%  │ Does it align with a stated preference? (+boost if yes)                              │ Direct from rating: 5/5=5, 4/5=4                                             │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+  │ Chronic Disease Risk │ 20%    │ Association with CVD, diabetes, cancer, dementia (5=direct cause, 1=minimal)         │ Long-term health implications if unaddressed                                 │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+  │ Evidence Strength    │ 20%    │ Number of abnormal markers + magnitude (5=5+ markers severe, 1=single borderline)    │ Biomarker support + symptom documentation (5=both strong, 1=preference only) │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────┤
+  │ Actionability        │ 15%    │ How responsive to intervention? Protocol available? (5=highly responsive, 1=limited) │ Same criteria                                                                │
+  └──────────────────────┴────────┴──────────────────────────────────────────────────────────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────┘
+
+  Standard Theme Score = (Severity × 0.225) + (Patient Importance × 0.225) +
+                         (Disease Risk × 0.20) + (Evidence × 0.20) +
+                         (Actionability × 0.15)
+
+  ────────────────────────────────────────────────────────────────────────────────
+                   STEP 3: SCORING FACTORS — FOUNDATIONS THEME
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Foundations uses INVERSE severity scoring—scores HIGHER when patient is HEALTHIER:
+
+  ┌──────────────────────┬────────┬──────────────────────────────────────────────────────────────────────────────────────┐
+  │        Factor        │ Weight │                                      Scoring                                         │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┤
+  │ Biomarker Health     │ 30%    │ INVERSE of biomarker severity:                                                       │
+  │                      │        │   5 = No significant patterns detected                                               │
+  │                      │        │   4 = Only isolated/transitory abnormalities                                         │
+  │                      │        │   3 = 1 mild significant pattern                                                     │
+  │                      │        │   2 = 1 moderate pattern OR 2 mild patterns                                          │
+  │                      │        │   1 = Multiple significant patterns or 1 severe pattern                              │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┤
+  │ Symptom Burden       │ 20%    │ INVERSE of symptom severity:                                                         │
+  │                      │        │   5 = No symptoms rated severe                                                       │
+  │                      │        │   4 = Mild symptoms only                                                             │
+  │                      │        │   3 = 1-2 moderate symptoms                                                          │
+  │                      │        │   2 = Multiple moderate symptoms                                                     │
+  │                      │        │   1 = Severe/debilitating symptoms present                                           │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┤
+  │ Preventive Value     │ 20%    │ Long-term benefit of foundational optimization:                                      │
+  │                      │        │   5 = Young (<40), no chronic conditions                                             │
+  │                      │        │   4 = Middle-aged (40-60), no chronic conditions                                     │
+  │                      │        │   3 = Any age, 1 controlled chronic condition                                        │
+  │                      │        │   2 = Multiple chronic conditions                                                    │
+  │                      │        │   1 = Acute issues requiring specific intervention                                   │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┤
+  │ Supplement Gap       │ 20%    │ How many Foundations supplements patient does NOT currently take:                    │
+  │                      │        │   5 = Takes 0 of 5 (omega-3, multivitamin, magnesium, fiber, creatine)               │
+  │                      │        │   4 = Takes 1 of 5                                                                   │
+  │                      │        │   3 = Takes 1 of 5 (but poor quality or suboptimal dose)                             │
+  │                      │        │   0 = Takes ≥2 of 5 → EXCLUDE FOUNDATIONS ENTIRELY                                   │
+  ├──────────────────────┼────────┼──────────────────────────────────────────────────────────────────────────────────────┤
+  │ Alternative Quality  │ 10%    │ Impact level of other available recommendations:                                     │
+  │                      │        │   5 = Other themes are low-impact/borderline, unlikely to change behavior            │
+  │                      │        │   4 = Other themes are mild, optional improvements                                   │
+  │                      │        │   3 = Other themes are moderate priority                                             │
+  │                      │        │   2 = Other themes are clearly actionable                                            │
+  │                      │        │   1 = Other themes are high-priority/urgent                                          │
+  └──────────────────────┴────────┴──────────────────────────────────────────────────────────────────────────────────────┘
+
+  Foundations Score = (Biomarker Health × 0.30) + (Symptom Burden × 0.20) +
+                      (Preventive Value × 0.20) + (Supplement Gap × 0.20) +
+                      (Alternative Quality × 0.10)
+
+  EXCLUSION RULE: If patient takes ≥2 Foundations supplements → Foundations Score = 0 (excluded from ranking)
+
+  ────────────────────────────────────────────────────────────────────────────────
+                             CONTEXT MODIFIERS
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Standard Themes:
+  • +1 to Chronic Disease Risk if family history of related condition
+  • +1 to Evidence Strength if biomarker theme aligns with patient symptoms (or vice versa)
+  • -1 to Actionability if patient context limits implementation (e.g., dietary restrictions)
+
+  Foundations Theme:
+  • +0.5 to Preventive Value if patient explicitly interested in prevention/longevity
+  • -1 to Supplement Gap if patient has absorption issues or contraindications to Foundations items
+  • No modifier can raise any factor above 5 or below 1
+
+  ────────────────────────────────────────────────────────────────────────────────
+                          CROSS-THEME CONSIDERATIONS
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Before final ranking, check for:
+
+  1. Merged themes: If a biomarker theme and preference theme were merged (e.g., Metabolic +
+     Weight Loss), use the HIGHER score for each factor from either source
+     • Note: Foundations does NOT merge with other themes—it always remains separate
+
+  2. Alignment bonus: Biomarker themes that align with patient preferences score higher on
+     "Patient Importance":
+     • Metabolic ↔ Weight Loss
+     • Iron/Thyroid/Metabolic ↔ Energy
+     • Cardiovascular/Metabolic ↔ Longevity
+     • Hormone biomarkers ↔ Sex Hormones preference
+
+  3. Evidence cross-support: Preference themes with supporting biomarker abnormalities score
+     higher on "Evidence Strength"
+
+  4. Foundations inverse relationship: As other themes increase in severity/importance,
+     Foundations "Alternative Quality" factor decreases (and vice versa)
+
+  ────────────────────────────────────────────────────────────────────────────────
+                              SELECTION RULES
+  ────────────────────────────────────────────────────────────────────────────────
+
+  1. Check Foundations exclusion: If patient takes ≥2 of (omega-3, multivitamin, magnesium,
+     fiber, creatine) → remove Foundations from ranking
+
+  2. Rank all themes by Priority Score (highest to lowest)
+
+  3. Select top 3 (all patients receive exactly 3 protocols)
+
+  4. For ties, prefer:
+     a. Themes with predefined protocols over AI-generated
+     b. Themes with both biomarker AND symptom support over single-source
+     c. Higher clinical severity
+     d. For Foundations ties with borderline themes → prefer Foundations if other theme
+        represents low-impact intervention unlikely to change patient behavior
+
+  ────────────────────────────────────────────────────────────────────────────────
+                               OUTPUT FORMAT
+  ────────────────────────────────────────────────────────────────────────────────
+
+  #1: [Theme Name] | Score: X.XX | Source: [Biomarker/Preference/Merged/Foundations]
+      Evidence: [key biomarkers and/or symptoms, or "Preventive health optimization"]
+      Protocol: [Predefined name or AI-Generated]
+
+  #2: [Theme Name] | Score: X.XX | Source: [...]
+      Evidence: [...]
+      Protocol: [...]
+
+  #3: [Theme Name] | Score: X.XX | Source: [...]
+      Evidence: [...]
+      Protocol: [...]
+
+  Other findings (not selected):
+  - [Theme 4]: Score X.XX - [brief reason not prioritized]
+  - [Theme 5]: Score X.XX - [brief reason not prioritized]
+
+  ───────────────────────────────────────────────────────────────────────────────
+  Foundations Status: [Included as #X / Excluded (takes ≥2 supplements) /
+                      Not prioritized (score X.XX, ranked #Y)]
+  ───────────────────────────────────────────────────────────────────────────────
+
+  ════════════════════════════════════════════════════════════════════════════════
+                                EXAMPLES
+  ════════════════════════════════════════════════════════════════════════════════
+
+  Example A: Healthy 32-year-old, minor isolated abnormalities
+  ─────────────────────────────────────────────────────────────
+  Biomarkers: Slightly low MCV (isolated), borderline low Vitamin D (28 ng/mL)
+  Symptoms: Rates "Energy" 4/5 but symptoms are mild
+  Supplements: Takes none currently
+
+  Foundations Scoring:
+  • Biomarker Health: 4 (only isolated/transitory + 1 borderline significant)
+  • Symptom Burden: 4 (mild symptoms only)
+  • Preventive Value: 5 (young, no chronic conditions)
+  • Supplement Gap: 5 (takes 0 of 5)
+  • Alternative Quality: 4 (Vitamin D is only clear recommendation, Energy is mild)
+  → Foundations Score = (4×0.30) + (4×0.20) + (5×0.20) + (5×0.20) + (4×0.10) = 4.40
+
+  Output:
+  #1: Foundations | Score: 4.40 | Source: Foundations
+      Evidence: Preventive health optimization
+      Protocol: Foundations of Health Protocol
+
+  #2: Vitamin D | Score: 3.85 | Source: Biomarker
+      Evidence: 25(OH)D 28 ng/mL (below optimal)
+      Protocol: Vitamin D Optimization Protocol
+
+  #3: Energy | Score: 3.20 | Source: Preference
+      Evidence: Patient-rated 4/5, mild fatigue symptoms
+      Protocol: Cellular Energy Restoration Protocol
+
+  Foundations Status: Included as #1
+
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Example B: 45-year-old with clear metabolic pattern
+  ───────────────────────────────────────────────────
+  Biomarkers: High HbA1c (6.1%), High fasting glucose, High triglycerides, Low HDL
+  Symptoms: Rates "Weight Loss" 5/5 with significant fatigue
+  Supplements: Takes fish oil only
+
+  Foundations Scoring:
+  • Biomarker Health: 1 (significant metabolic pattern, multiple markers)
+  • Symptom Burden: 2 (moderate-severe symptoms)
+  • Preventive Value: 3 (middle-aged, emerging metabolic condition)
+  • Supplement Gap: 4 (takes 1 of 5)
+  • Alternative Quality: 1 (Metabolic protocol is high-priority, clearly actionable)
+  → Foundations Score = (1×0.30) + (2×0.20) + (3×0.20) + (4×0.20) + (1×0.10) = 2.20
+
+  Output:
+  #1: Metabolic | Score: 4.65 | Source: Biomarker
+      Evidence: HbA1c 6.1%, elevated glucose, high TG, low HDL
+      Protocol: Metabolic Reset Protocol
+
+  #2: Weight Loss | Score: 4.40 | Source: Merged (Preference + Biomarker support)
+      Evidence: Patient-rated 5/5, significant fatigue, metabolic markers supportive
+      Protocol: Medical Weight Loss Protocol
+
+  #3: Energy | Score: 3.50 | Source: Preference
+      Evidence: Significant fatigue symptoms
+      Protocol: Cellular Energy Restoration Protocol
+
+  Other findings:
+  - Foundations: Score 2.20 - Low priority due to significant metabolic pattern requiring intervention
+
+  Foundations Status: Not prioritized (score 2.20, ranked #4)
+
+  ────────────────────────────────────────────────────────────────────────────────
+
+  Example C: 55-year-old, healthy, already takes key supplements
+  ──────────────────────────────────────────────────────────────
+  Biomarkers: All within normal range
+  Symptoms: Rates "Longevity" 5/5, "Skin & Hair" 4/5
+  Supplements: Takes multivitamin AND fish oil (2 of 5 Foundations items)
+
+  Foundations Scoring:
+  • Supplement Gap: 0 → EXCLUDED (takes ≥2 Foundations supplements)
+
+  Output:
+  #1: Longevity | Score: 4.10 | Source: Preference
+      Evidence: Patient-rated 5/5, strong interest in healthspan optimization
+      Protocol: Longevity Optimization Protocol
+
+  #2: Skin & Hair | Score: 3.45 | Source: Preference
+      Evidence: Patient-rated 4/5
+      Protocol: Skin & Hair Vitality Protocol
+
+  #3: Cardiovascular | Score: 3.20 | Source: AI-Generated
+      Evidence: Age-appropriate preventive focus, aligns with longevity interest
+      Protocol: AI-Generated Cardiovascular Prevention Protocol
+
+  Foundations Status: Excluded (takes ≥2 supplements: multivitamin, fish oil)
+
+  ════════════════════════════════════════════════════════════════════════════════
+```
