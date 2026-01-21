@@ -50,6 +50,22 @@ python3 rag_workflow.py \
 
 The `combined_prompt.txt` output is ready to send to your LLM.
 
+## Generate Actual Email Series
+
+To generate the complete 30-day email series (5 emails), use the `--generate-emails` flag:
+
+```sh
+export OPENAI_API_KEY=your_key_here
+export OPENAI_MODEL=gpt-4o-mini
+
+python rag_workflow.py \
+  --input example_input.json \
+  --generate-emails \
+  --emails-output email_series.txt
+```
+
+This sends the combined prompt to the LLM and generates the actual coaching emails.
+
 ## Free-Text Synthetic Input
 
 This mode uses an OpenAI-compatible API to turn free text into a synthetic
@@ -65,6 +81,15 @@ python rag_workflow.py \
   --output /absolute/path/to/combined_prompt.txt
 ```
 
+You can also combine `--free-text` with `--generate-emails` to go from free text all the way to generated emails:
+
+```sh
+python rag_workflow.py \
+  --free-text "33 year old female focused on weight loss" \
+  --generate-emails \
+  --emails-output email_series.txt
+```
+
 Or create a `.env` file (recommended, gitignored):
 
 ```
@@ -76,7 +101,7 @@ Optional env vars:
 
 - `OPENAI_API_BASE` (default: `https://api.openai.com`)
 - `OPENAI_MODEL` (default: `gpt-4o-mini`)
-- `OPENAI_API_KEY` (required for `--free-text`)
+- `OPENAI_API_KEY` (required for `--free-text` and `--generate-emails`)
 
 ## Input Shape
 

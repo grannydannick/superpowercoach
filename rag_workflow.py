@@ -309,6 +309,25 @@ def generate_synthetic_input(
     return json.loads(json_text)
 
 
+def generate_emails_from_prompt(
+    combined_prompt: str,
+    api_base: str,
+    api_key: str,
+    model: str,
+) -> str:
+    """Generate the 30-day email series by sending the combined prompt to an LLM."""
+    content = call_openai_chat(
+        api_base=api_base,
+        api_key=api_key,
+        model=model,
+        messages=[
+            {"role": "user", "content": combined_prompt}
+        ],
+        temperature=0.7,
+    )
+    return content
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="RAG workflow for Superpower Coach")
     parser.add_argument(
@@ -343,6 +362,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--synthetic-output",
         help="Optional path to write synthetic input JSON",
+    )
+    parser.add_argument(
+        "--generate-emails",
+        action="store_true",
+        help="Generate actual email series by sending prompt to LLM",
+    )
+    parser.add_argument(
+        "--emails-output",
+        help="Path to write generated email series (required with --generate-emails)",
     )
     parser.add_argument(
         "--llm-model",
@@ -418,6 +446,28 @@ def main() -> None:
         Path(args.output).write_text(output_text, encoding="utf-8")
     else:
         print(output_text)
+
+    # Generate emails if requested
+    if args.generate_emails:
+        if not args.llm_api_key:
+            raise ValueError(
+                "LLM API key missing for email generation. Set OPENAI_API_KEY or pass --llm-api-key."
+            )
+        if not args.emails_output:
+            raise ValueError(
+                "--emails-output is required when using --generate-emails"
+            )
+
+        print("Generating email series with LLM...")
+        combined_prompt = build_combined_prompt(prompt_text, prompt_input)
+        emails = generate_emails_from_prompt(
+            combined_prompt=combined_prompt,
+            api_base=args.llm_api_base,
+            api_key=args.llm_api_key,
+            model=args.llm_model,
+        )
+        Path(args.emails_output).write_text(emails, encoding="utf-8")
+        print(f"Email series written to {args.emails_output}")
 
 
 if __name__ == "__main__":
