@@ -15,4 +15,6 @@ __pycache__/
 # Output files
 combined_prompt.txt
 rag_protocols.json
+rag_details.json
 synthetic_input.json
+generated_emails.txt
