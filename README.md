@@ -13,15 +13,39 @@ This project builds a retrieval-augmented workflow that:
 - `protocols.txt`: Protocol library and recommendations.
 - `rag_workflow.py`: RAG pipeline + optional synthetic input generation.
 - `workflow.md`: Usage notes.
+- `example_input.json`: Example input file to get started.
+- `test.sh`: Test script to verify everything works.
 
-## Quickstart
+## Quick Test
+
+Run the included test script to verify everything is working:
 
 ```sh
-python rag_workflow.py \
-  --input /absolute/path/to/input.json \
+./test.sh
+```
+
+This will generate `test_output.txt` and `test_rag.json` for inspection.
+
+## Basic Usage
+
+Use the example input file:
+
+```sh
+python3 rag_workflow.py \
+  --input example_input.json \
   --format prompt \
-  --output /absolute/path/to/combined_prompt.txt \
-  --rag-output /absolute/path/to/rag_protocols.json
+  --output combined_prompt.txt \
+  --rag-output rag_protocols.json
+```
+
+Or use your own input file:
+
+```sh
+python3 rag_workflow.py \
+  --input /path/to/your_input.json \
+  --format prompt \
+  --output combined_prompt.txt \
+  --rag-output rag_protocols.json
 ```
 
 The `combined_prompt.txt` output is ready to send to your LLM.
