@@ -391,11 +391,10 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    load_dotenv(Path(".env"))
     args = parse_args()
     protocols_path = Path(args.protocols)
     prompt_path = Path(args.prompt)
-
-    load_dotenv(Path(".env"))
 
     protocols_text = read_text(protocols_path)
     prompt_text = read_text(prompt_path)
