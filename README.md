@@ -6,6 +6,16 @@ This project builds a retrieval-augmented workflow that:
 - Retrieves protocol recommendations from `protocols.txt`.
 - Feeds everything into `prompt.txt` to generate a 30-day email series.
 
+## 🚀 Quick Start (For Beginners)
+
+**New to coding? Want the easiest way to run this?**
+
+1. Get an OpenAI API key from https://platform.openai.com/api-keys
+2. Create a `.env` file with your key (copy from `.env.example`)
+3. Run: `./run.sh`
+
+See **[QUICKSTART.md](QUICKSTART.md)** for step-by-step beginner instructions!
+
 ## Files
 
 - `prompt.txt`: The email-generation prompt and formatting rules.
